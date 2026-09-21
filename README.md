@@ -84,7 +84,7 @@ sortie step by step, the exchange shops and troubleshooting.
 | **Account** | Create, select and delete Master accounts, and grant one of them a full Servant, Craft Essence and item roster in a single click, with levels, bond, costumes and clear rewards. |
 | **Cards and Deck** | The card library and the deck editor, searchable by official English name, with Craft Essence effects in FGO NA phrasing. The deck is sent to the game every time you press Play. |
 | **Settings** | Display - monitor, resolution, aspect ratio, frame rate, display mode. Controls - keyboard, XInput or native DualSense, with dead zone, rumble and a controller test. Audio. |
-| **Advanced** | The local server and its settings, Diagnostics and Help with every game error code and its fix, mouse cursor, debug, photo mode, and About. |
+| **Advanced** | The local server and its settings, Banners to choose which limited-time events appear on the Terminal page, Diagnostics and Help with every game error code and its fix, mouse cursor, debug, photo mode, and About. |
 
 It keeps itself up to date: the launcher asks GitHub Releases whether there is a newer version and
 offers to fetch and apply it, so a translation fix reaches you without a reinstall.

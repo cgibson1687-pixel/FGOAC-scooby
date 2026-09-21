@@ -9,6 +9,12 @@ installer that puts them there.
 
 ## [Unreleased]
 
+### Added
+
+- Banners (Advanced): choose which limited-time events appear on the Terminal page. Press Apply FGO
+  Event Toggle Patch once, tick the events to keep and press Save, then stop and start the local
+  server from the Play page. With nothing ticked every banner appears. Contributed by Silvarrn.
+
 ## [1.1.2] - 2026-09-16
 
 Works on Cloud23333's V1.01 and V1.02. Unzip this release over your game folder and run the
