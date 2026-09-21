@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -108,15 +107,17 @@ public partial class BannerSettingsView : UserControl
 		}
 		using StreamReader patchReader = new StreamReader(patchStream);
 		string patchText = patchReader.ReadToEnd();
-	using JsonDocument document = JsonDocument.Parse(patchText);
+		using JsonDocument document = JsonDocument.Parse(patchText);
 
-	if (!document.RootElement.TryGetProperty("edits", out JsonElement editsElement)
-	    || editsElement.ValueKind != JsonValueKind.Array)
-	{
-	    throw new InvalidOperationException(
-	        "The event toggle patch file is missing the edits array.");
-	}
+		if (!document.RootElement.TryGetProperty("edits", out JsonElement editsElement)
+			|| editsElement.ValueKind != JsonValueKind.Array)
+		{
+			throw new InvalidOperationException(
+				"The event toggle patch file is missing the edits array.");
+		}
 		List<string> messages = new List<string>();
+		// Every edit is checked before any file is written, so a mismatch cannot leave one patched.
+		List<(string TargetPath, string UpdatedText)> pending = new List<(string, string)>();
 		foreach (JsonElement editElement in editsElement.EnumerateArray())
 		{
 			string fileName = editElement.TryGetProperty("file", out JsonElement fileElement) ? fileElement.GetString() : null;
@@ -154,18 +155,28 @@ public partial class BannerSettingsView : UserControl
 				throw new InvalidOperationException(targetPath + " does not match what this patch expects. The server files may have been updated since this launcher was built.");
 			}
 
-			string backupPath = targetPath + ".bak";
-			if (!File.Exists(backupPath))
-			{
-				File.Copy(targetPath, backupPath);
-			}
-
 			Match oldMatch = oldMatches[0];
-			string updatedText = currentText.Substring(0, oldMatch.Index)
+			pending.Add((targetPath, currentText.Substring(0, oldMatch.Index)
 				+ normalizedAnchorNew
-				+ currentText.Substring(oldMatch.Index + oldMatch.Length);
-			AtomicFile.WriteAllText(targetPath, updatedText);
-			ValidatePythonFile(targetPath, backupPath);
+				+ currentText.Substring(oldMatch.Index + oldMatch.Length)));
+		}
+
+		foreach ((string targetPath, string updatedText) in pending)
+		{
+			try
+			{
+				// Pre-patch copy for ValidatePythonFile; AtomicFile.Write owns the plain .bak slot.
+				string backupPath = targetPath + ".event-toggle.bak";
+				File.Copy(targetPath, backupPath, overwrite: true);
+				AtomicFile.WriteAllText(targetPath, updatedText);
+				ValidatePythonFile(targetPath, backupPath);
+			}
+			catch (Exception ex)
+			{
+				// Earlier files in this pass are still patched, so the report has to name them.
+				messages.Add(ex.Message);
+				throw new InvalidOperationException(string.Join(Environment.NewLine, messages));
+			}
 			messages.Add("Applied to " + Path.GetFileName(targetPath));
 		}
 
@@ -294,7 +305,6 @@ public partial class BannerSettingsView : UserControl
 		{
 			UseShellExecute = false,
 			CreateNoWindow = true,
-			RedirectStandardOutput = true,
 			RedirectStandardError = true,
 			WorkingDirectory = Path.GetDirectoryName(path) ?? AppContext.BaseDirectory
 		};
