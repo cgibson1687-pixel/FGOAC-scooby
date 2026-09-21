@@ -223,50 +223,58 @@ public partial class BannerSettingsView : UserControl
 			.ToList();
 
 		string valueText = selectedIds.Count == 0 ? "null" : "[" + string.Join(", ", selectedIds) + "]";
-		string[] lines = File.ReadAllLines(path);
-		bool found = false;
-		int serverStart = -1;
-		int serverEnd = lines.Length;
-		for (int i = 0; i < lines.Length; i++)
+		string original = File.ReadAllText(path);
+		string lineEnding = original.Contains("\r\n", StringComparison.Ordinal) ? "\r\n" : "\n";
+		bool trailingNewline = original.EndsWith("\n", StringComparison.Ordinal);
+		List<string> lines = new List<string>(original.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n'));
+		if (trailingNewline)
 		{
-			string trimmed = lines[i].Trim();
-			if (trimmed == "server:")
-			{
-				serverStart = i;
-				break;
-			}
+			lines.RemoveAt(lines.Count - 1);
 		}
+		int serverStart = lines.FindIndex(line => line.TrimEnd() == "server:");
 		if (serverStart < 0)
 		{
 			throw new InvalidOperationException("fgo.yaml has no server: block. The file may have been edited by hand.");
 		}
-		for (int i = serverStart + 1; i < lines.Length; i++)
+		// The block ends at the next top-level key; an entry is replaced with its continuation lines.
+		int insertAt = serverStart + 1;
+		int replaceFrom = -1;
+		int replaceTo = -1;
+		int keyIndent = 0;
+		for (int i = serverStart + 1; i < lines.Count; i++)
 		{
-			string trimmed = lines[i].Trim();
-			if (trimmed.Length == 0 && !trimmed.StartsWith("#") && !lines[i].StartsWith(" ") && !lines[i].StartsWith("\t"))
+			string trimmed = lines[i].TrimStart();
+			if (trimmed.Length == 0 || trimmed.StartsWith("#", StringComparison.Ordinal))
 			{
-				serverEnd = i;
+				continue;
+			}
+			int indent = lines[i].Length - trimmed.Length;
+			if (indent == 0)
+			{
 				break;
 			}
-		}
-		for (int i = serverStart + 1; i < serverEnd; i++)
-		{
-			if (lines[i].TrimStart().StartsWith("enabled_singularity_ids:", StringComparison.Ordinal))
+			if (replaceTo == i && (indent > keyIndent
+				|| (indent == keyIndent && trimmed.StartsWith("- ", StringComparison.Ordinal))))
 			{
-				lines[i] = "  enabled_singularity_ids: " + valueText;
-				found = true;
-				break;
+				replaceTo = i + 1;
 			}
+			else if (trimmed.StartsWith("enabled_singularity_ids:", StringComparison.Ordinal))
+			{
+				keyIndent = indent;
+				replaceFrom = i;
+				replaceTo = i + 1;
+			}
+			insertAt = i + 1;
 		}
-		if (!found)
+
+		if (replaceFrom < 0)
 		{
-			List<string> expanded = new List<string>(lines.Length + 2);
-			expanded.AddRange(lines.Take(serverEnd));
-			expanded.Add("  enabled_singularity_ids: " + valueText);
-			expanded.AddRange(lines.Skip(serverEnd));
-			lines = expanded.ToArray();
+			replaceFrom = insertAt;
+			replaceTo = insertAt;
 		}
-		AtomicFile.WriteAllText(path, string.Join(Environment.NewLine, lines) + Environment.NewLine);
+		lines.RemoveRange(replaceFrom, replaceTo - replaceFrom);
+		lines.Insert(replaceFrom, "  enabled_singularity_ids: " + valueText);
+		AtomicFile.WriteAllText(path, string.Join(lineEnding, lines) + (trailingNewline ? lineEnding : string.Empty));
 	}
 
 	private string ResolvePatchTarget(string fileName)
