@@ -9,6 +9,17 @@ installer that puts them there.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-21
+
+Works on Cloud23333's V1.01 and V1.02. Unzip this release over your game folder and run the
+launcher, or take it through Check for updates. Your accounts, decks, settings and whichever
+graphics layer you have stay as they are.
+
+### Fixed
+
+- Apply-EN-Patch.ps1 -Rollback after an update that changed no game files restored the previous
+  release's backup. It now restores the marker alone.
+
 ### Added
 
 - Banners (Advanced): choose which limited-time events appear on the Terminal page. Press Apply FGO
