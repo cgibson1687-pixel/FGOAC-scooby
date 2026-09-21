@@ -28,6 +28,8 @@ public partial class BannerSettingsView : UserControl
 
 	private readonly Dictionary<string, CheckBox> bannerOptions = new();
 
+	private bool ready;
+
 	private string ServerRoot => Path.GetFullPath(Path.Combine(GamePaths.GameRoot, "..", "Server"));
 
 	private string ServerYamlPath => Path.GetFullPath(Path.Combine(ServerRoot, "artemis", "config", "fgo.yaml"));
@@ -42,10 +44,16 @@ public partial class BannerSettingsView : UserControl
 				bannerOptions[id] = checkBox;
 			}
 		}
+		LoadEnabledSingularityIds();
+		ready = true;
 	}
 
 	private void Option_OnChanged(object sender, RoutedEventArgs e)
 	{
+		if (!ready)
+		{
+			return;
+		}
 		StatusText.Text = "Banner settings updated. Make sure you press Save.";
 	}
 
@@ -76,7 +84,7 @@ public partial class BannerSettingsView : UserControl
 				checkBox.IsChecked = false;
 			}
 		}
-		StatusText.Text = "Banner filter turned off. Stop and start the local server from the Play page for the changes to take effect.";
+		StatusText.Text = "Banner selection cleared. Press Save to turn the filter off.";
 	}
 
 	private void ApplyEventPatch_OnClick(object sender, RoutedEventArgs e)
@@ -174,6 +182,30 @@ public partial class BannerSettingsView : UserControl
 		string[] lines = value.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n');
 		string pattern = string.Join("\\r?\\n", lines.Select(Regex.Escape));
 		return Regex.Matches(text, pattern, RegexOptions.CultureInvariant);
+	}
+
+	// Ticks the boxes for the ids in fgo.yaml; any other value leaves every box clear.
+	private void LoadEnabledSingularityIds()
+	{
+		try
+		{
+			if (!File.Exists(ServerYamlPath))
+			{
+				return;
+			}
+			Match entry = Regex.Match(File.ReadAllText(ServerYamlPath), @"^[ \t]*enabled_singularity_ids:[ \t]*\[([^\]]*)\]", RegexOptions.Multiline);
+			foreach (Match id in Regex.Matches(entry.Groups[1].Value, "[0-9]+"))
+			{
+				if (bannerOptions.TryGetValue("LTE" + id.Value, out CheckBox? checkBox))
+				{
+					checkBox.IsChecked = true;
+				}
+			}
+		}
+		catch (Exception ex)
+		{
+			StatusText.Text = "Could not read the saved banner settings: " + ex.Message;
+		}
 	}
 
 	private void WriteEnabledSingularityIds()
