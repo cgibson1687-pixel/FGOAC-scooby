@@ -54,7 +54,7 @@ public partial class BannerSettingsView : UserControl
 		try
 		{
 			WriteEnabledSingularityIds();
-			StatusText.Text = "Banner settings saved. Restart the local server for the changes to take effect.";
+			StatusText.Text = "Banner settings saved. Stop and start the local server from the Play page for the changes to take effect.";
 		}
 		catch (Exception ex)
 		{
@@ -76,7 +76,7 @@ public partial class BannerSettingsView : UserControl
 				checkBox.IsChecked = false;
 			}
 		}
-		StatusText.Text = "Banner filter turned off. Restart the game for the changes to take effect.";
+		StatusText.Text = "Banner filter turned off. Stop and start the local server from the Play page for the changes to take effect.";
 	}
 
 	private void ApplyEventPatch_OnClick(object sender, RoutedEventArgs e)
@@ -116,13 +116,13 @@ public partial class BannerSettingsView : UserControl
 			string anchorNew = editElement.TryGetProperty("anchor_new", out JsonElement newElement) ? newElement.GetString() : null;
 			if (string.IsNullOrEmpty(fileName) || string.IsNullOrEmpty(anchorOld) || string.IsNullOrEmpty(anchorNew))
 			{
-				throw new InvalidOperationException("One of the patch entries is missing. Check the file for, anchor_old, or anchor_new.");
+				throw new InvalidOperationException("One of the patch entries is missing its file, anchor_old or anchor_new value.");
 			}
 
 			string targetPath = ResolvePatchTarget(fileName);
 			if (!File.Exists(targetPath))
 			{
-				throw new InvalidOperationException(targetPath + " could not be found by this patch. The server files may have been updated since this launcher was built.");
+				throw new InvalidOperationException(targetPath + " was not found. The server files may have been updated since this launcher was built.");
 			}
 
 			string currentText = File.ReadAllText(targetPath);
@@ -206,7 +206,7 @@ public partial class BannerSettingsView : UserControl
 		}
 		if (serverStart < 0)
 		{
-			throw new InvalidOperationException("The server: block could not be found in fgo.yaml. Has there been other changes made?");
+			throw new InvalidOperationException("fgo.yaml has no server: block. The file may have been edited by hand.");
 		}
 		for (int i = serverStart + 1; i < lines.Length; i++)
 		{

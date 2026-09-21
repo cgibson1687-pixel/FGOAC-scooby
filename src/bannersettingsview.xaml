@@ -4,9 +4,9 @@
     <StackPanel Margin="28" MaxWidth="900" HorizontalAlignment="Left">
       <TextBlock Text="Limited Time Events" Style="{StaticResource SectionTitleStyle}" Margin="0,0,0,10" />
       <StackPanel>
-      <TextBlock Text="Allows the player to hide Limited Time Event Banners from the Terminal Page, use the Checkbox to decide what banners should appear. Once a box is ticked, only the selected banners will appear. Selecting none will make all banners appear." Style="{StaticResource HelpTextStyle}" Margin="0,0,0,12" />
+      <TextBlock Text="Hides limited-time event banners from the Terminal page. Tick the events that should appear. Once one box is ticked everything else is hidden, including events added later. With nothing ticked every banner appears." Style="{StaticResource HelpTextStyle}" Margin="0,0,0,12" />
       <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="1" Background="{StaticResource PlateBrush}" Padding="12" Margin="0,0,0,18">
-        <TextBlock Text="Changes to the server files must be made to allow these options to work. Use the Button below to apply the changes to these files first" TextWrapping="Wrap" Foreground="{StaticResource TextBrush}" />
+        <TextBlock Text="The local server's files have to be patched once before these options work. Use the button below to apply the patch." TextWrapping="Wrap" Foreground="{StaticResource TextBrush}" />
       </Border>
       <WrapPanel Margin="0,18,0,12">
       <Button Content="Apply FGO Event Toggle Patch" Width="240" HorizontalAlignment="Left" Margin="0,0,0,12" Click="ApplyEventPatch_OnClick" />
@@ -19,14 +19,14 @@
             <CheckBox Name="LTE8012" Content="Prisma Codes" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8013" Content="Material Exchange Ticket Celebration" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8014" Content="2nd Anniversary" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
-            <CheckBox Name="LTE8015" Content="Da Vinci Enhancement" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
-            <CheckBox Name="LTE8016" Content="Chaldea Battle Summer League" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
+            <CheckBox Name="LTE8015" Content="Da Vinci Acquisition Campaign - Revival II" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
+            <CheckBox Name="LTE8016" Content="Chaldea Battle Summer League - Revival" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8017" Content="Summer Warrior Vacation Training" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8018" Content="Suzuka Gozen's Happy Merry Love Christmas!" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
-            <CheckBox Name="LTE8019" Content="Elena's Christmas Present Recapture Operation" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
+            <CheckBox Name="LTE8019" Content="Elena's Christmas Present Recapture Operation - Revival" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8020" Content="Setanta's Trials" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8021" Content="Prisma Codes - Revival" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
-            <CheckBox Name="LTE8022" Content="Lady Reines' Case Files" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />            
+            <CheckBox Name="LTE8022" Content="Lady Reines' Case Files" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8023" Content="Summer Warrior Vacation Training - Revival" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8025" Content="Servant Boot Camp! Mysterious Strict Instructor" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8027" Content="Lady Reines' Case Files - Revival" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
@@ -49,7 +49,7 @@
             <CheckBox Name="LTE8045" Content="Destiny-Dividing: The Red Beast and the Flame's Mission" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8046" Content="Demon Beast Calamity Time Trial V" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8047" Content="Setanta's Trials - Revival II" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
-            <CheckBox Name="LTE8048" Content="Chaldea Battle Summer League - Revival" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
+            <CheckBox Name="LTE8048" Content="Chaldea Battle Summer League - Revival II" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
             <CheckBox Name="LTE8049" Content="Santa Fran's Christmas Present! - Revival II" Margin="0,8" Checked="Option_OnChanged" Unchecked="Option_OnChanged" />
       </StackPanel>
       <WrapPanel Margin="0,18,0,12">
